@@ -41,6 +41,7 @@ type QRProps = {
   imageSettings?: ImageSettings;
   title?: string;
   minVersion?: number;
+  fillOpacity?: number;
 };
 type QRPropsCanvas = QRProps & React.CanvasHTMLAttributes<HTMLCanvasElement>;
 type QRPropsSVG = QRProps & React.SVGAttributes<SVGSVGElement>;
@@ -413,6 +414,7 @@ const QRCodeSVG = React.forwardRef(function QRCodeSVG(
     title,
     marginSize,
     imageSettings,
+    fillOpacity,
     ...otherProps
   } = props;
 
@@ -464,6 +466,7 @@ const QRCodeSVG = React.forwardRef(function QRCodeSVG(
       {...otherProps}>
       {!!title && <title>{title}</title>}
       <path
+        fillOpacity={fillOpacity}
         fill={bgColor}
         d={`M0,0 h${numCells}v${numCells}H0z`}
         shapeRendering="crispEdges"
